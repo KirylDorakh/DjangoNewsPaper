@@ -147,12 +147,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Password reset
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# with sendGrid
+# with smtp
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-DEFAULT_FROM_EMAIL = 'kirill.dorokh99@gmail.com'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
+EMAIL_HOST = env.str('EMAIL_HOST')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env.int('EMAIL_PORT')
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=True)
